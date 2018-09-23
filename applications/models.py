@@ -83,12 +83,12 @@ H_Twitter = 'Twitter'
 H_OTHER = 'Other'
 
 HEARD_FROM = [
-    (H_FACEBOOK = 'Facebook'),
-    (H_FRIENDS = 'Friends'),
-    (H_EVENTBRITE = 'EventBrite'),
-    (H_Instagram = 'Instagram'),
-    (H_Twitter = 'Twitter'),
-    (H_OTHER = 'Other')
+    (H_FACEBOOK, 'Facebook'),
+    (H_FRIENDS, 'Friends'),
+    (H_EVENTBRITE, 'EventBrite'),
+    (H_Instagram, 'Instagram'),
+    (H_Twitter, 'Twitter'),
+    (H_OTHER, 'Other')
 ]
 
 TSHIRT_SIZES = [(size, size) for size in ('XS S M L XL XXL'.split(' '))]
