@@ -8,6 +8,7 @@ export DOMAIN="my.hackupc.com"
 
 echo "checking updates..."
 ./env/bin/pip install -r requirements.txt
+./env/bin/pip install psycopg2 --upgrade
 echo "checking updates...done"
 echo "migrating db..."
 ./env/bin/python manage.py migrate
