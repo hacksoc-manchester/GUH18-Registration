@@ -94,7 +94,7 @@ HEARD_FROM = [
 TSHIRT_SIZES = [(size, size) for size in ('XS S M L XL XXL'.split(' '))]
 DEFAULT_TSHIRT_SIZE = 'M'
 
-YEARS = [(int(size), size) for size in ('2018 2019 2020 2021 2022 2023 2024'.split(' '))]
+YEARS = [(int(size), size) for size in ('2017, 2018 2019 2020 2021 2022 2023 2024'.split(' '))]
 DEFAULT_YEAR = 2017
 
 
@@ -158,6 +158,9 @@ class Application(models.Model):
     # Info for swag and food
     diet = models.CharField(max_length=300, choices=DIETS, default=D_NONE)
     other_diet = models.CharField(max_length=600, blank=True, null=True)
+    other_gender = models.CharField(max_length=600, blank=True, null=True)
+    other_heard_from = models.CharField(max_length=600, blank=True, null=True)
+    other_specialization = models.CharField(max_length=600, blank=True, null=True)
     tshirt_size = models.CharField(max_length=3, default=DEFAULT_TSHIRT_SIZE, choices=TSHIRT_SIZES)
 
     @classmethod

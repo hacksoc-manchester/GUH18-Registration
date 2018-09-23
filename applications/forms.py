@@ -60,6 +60,12 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
         widget=forms.RadioSelect
     )
 
+    data_sharing = forms.BooleanField(required=False,
+                                      label='I have read and accept '
+                                            '<a href="%s" target="_blank">our Data Sharing Policy</a>' % (
+                                                getattr(settings, 'CODE_CONDUCT_LINK', '/code_conduct'),
+                                                settings.HACKATHON_NAME), )
+
     code_conduct = forms.BooleanField(required=False,
                                       label='I have read and accept '
                                             '<a href="%s" target="_blank">%s Code of conduct</a>' % (
@@ -100,8 +106,7 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
 
     def clean_projects(self):
         data = self.cleaned_data['projects']
-        first_timer = self.cleaned_data['first_timer']
-        if not first_timer and not data:
+        if not data:
             raise forms.ValidationError("Please fill this in order for us to know you a bit better")
         return data
 
@@ -138,13 +143,13 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
         # Fieldsets ordered and with description
         self._fieldsets = [
             ('Personal Info',
-             {'fields': ('university', 'degree', 'graduation_year', 'gender',
+             {'fields': ('university', 'degree', 'graduation_year', 'gender', 'other_gender',
                          'phone_number', 'tshirt_size', 'diet', 'other_diet',
-                         'under_age', 'lennyface'),
+                         'under_age', 'specialization', 'other_specialization', 'heard_from', 'other_heard_from'),
               'description': 'Hey there, before we begin we would like to know a little more about you.', }),
-            ('Hackathons?', {'fields': ('description', 'first_timer', 'projects'), }),
+            ('Hackathons?', {'fields': ('expectations', 'description', 'first_timer', 'projects'), }),
             ('Show us what you\'ve built',
-             {'fields': ('github', 'devpost', 'linkedin', 'site', 'resume'),
+             {'fields': ('resume'),
               'description': 'Some of our sponsors will use this information to potentially recruit you,'
               'so please include as much as you can.'}),
         ]
@@ -173,6 +178,7 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
         # Fields that we only need the first time the hacker fills the application
         # https://stackoverflow.com/questions/9704067/test-if-django-modelform-has-instance
         if not self.instance.pk:
+            self._fieldsets.append(('Data Sharing', {'fields': ('data_sharing',)}))
             self._fieldsets.append(('Code of Conduct', {'fields': ('code_conduct',)}))
         return super(ApplicationForm, self).fieldsets
 
@@ -183,36 +189,45 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
                       'question if you want',
             'graduation_year': 'What year have you graduated on or when will '
                                'you graduate',
-            'degree': 'What\'s your major?',
+            'degree': 'What are you studying?',
             'other_diet': 'Please fill here your dietary restrictions. We want to make sure we have food for you!',
-            'lennyface': 'tip: you can chose from here <a href="http://textsmili.es/" target="_blank">'
-                         ' http://textsmili.es/</a>',
+            'other_gender': 'Please specify your gender',
+            'other_heard_from': 'Please specify where you heard about GreatUniHack 2018',
+            'other_specialization': 'Please specify what describes you best',
             'projects': 'You can talk about about past hackathons, personal projects, awards etc. '
                         '(we love links) Show us your passion! :D',
-            'reimb_amount': 'We try our best to cover costs for all hackers, but our budget is limited'
+            'reimb_amount': 'We try our best to cover costs for all hackers, but our budget is limited. We do not cover costs for people joining us from Manchester.'
         }
 
         widgets = {
+            'nationality': forms.TextInput(attrs={'autocomplete': 'off'}),
             'origin': forms.TextInput(attrs={'autocomplete': 'off'}),
+            'skills': forms.TextInput(attrs={'autocomplete': 'off'}),
+            'expectations': forms.Textarea(attrs={'rows': 3, 'cols': 40}),
             'description': forms.Textarea(attrs={'rows': 3, 'cols': 40}),
             'projects': forms.Textarea(attrs={'rows': 3, 'cols': 40}),
             'tshirt_size': forms.RadioSelect(),
             'graduation_year': forms.RadioSelect(),
+            'specialization': forms.RadioSelect(),
+            'heard_from': forms.RadioSelect(),
         }
 
         labels = {
-            'gender': 'What gender do you associate with?',
+            'nationality': 'What’s your nationality?',
+            'gender': 'What gender do you identify as?',
             'graduation_year': 'What year are you graduating?',
             'tshirt_size': 'What\'s your t-shirt size?',
+            'specialization': 'Which of the following define you best?',
+            'heard_from': 'How did you hear about GUH?',
+            'skills': ' List down your top 3 skills',
             'diet': 'Dietary requirements',
-            'lennyface': 'Describe yourself in one "lenny face"?',
             'origin': 'Where are you joining us from?',
-            'description': 'Why are you excited about %s?' % settings.HACKATHON_NAME,
-            'projects': 'What projects have you worked on?',
-            'resume': 'Upload your resume',
+            'expectations': 'What do you expect from a hackathon?' % settings.HACKATHON_NAME,
+            'description': 'Why do you want to come and why should we choose you?' % settings.HACKATHON_NAME,
+            'projects': 'Tell us about any projects you have worked on (they need not be technical/CS related)',
+            'resume': 'Attach your CV here',
             'reimb_amount': 'How much money (%s) would you need to afford traveling to %s?' % (
                 getattr(settings, 'CURRENCY', '$'), settings.HACKATHON_NAME),
-
         }
 
         exclude = ['user', 'uuid', 'invited_by', 'submission_date', 'status_update_date', 'status', ]
