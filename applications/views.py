@@ -142,7 +142,6 @@ class HackerDashboard(LoginRequiredMixin, TabsView):
 
             return HttpResponseRedirect(reverse('root'))
         else:
-            print(form.errors)
             c = self.get_context_data()
             c.update({'form': form})
             return render(request, self.template_name, c)
