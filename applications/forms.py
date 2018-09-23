@@ -230,6 +230,8 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
             'tshirt_size': 'What\'s your t-shirt size?',
             'specialization': 'Which of the following define you best?',
             'heard_from': 'How did you hear about GUH?',
+            'other_specialization': 'Other specialization',
+            'other_heard_from': 'Other source',
             'skills': ' List down your top 3 skills',
             'diet': 'Dietary requirements',
             'origin': 'Where are you joining us from?',

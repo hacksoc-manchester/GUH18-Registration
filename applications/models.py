@@ -119,7 +119,7 @@ class Application(models.Model):
     under_age = models.BooleanField()
     nationality = models.CharField(max_length=50, null=True)
 
-    specialization = models.CharField(choices=SPECIALIZATIONS, default=S_OTHER,
+    specialization = models.CharField(choices=SPECIALIZATIONS,
                               max_length=20, null=True)
 
     skills = models.CharField(max_length=100, null=True)
@@ -135,7 +135,7 @@ class Application(models.Model):
     # Explain a little bit what projects have you done lately
     done_projects = models.TextField(max_length=500, blank=True, null=True)
 
-    heard_from = models.CharField(choices=HEARD_FROM, default=H_OTHER,
+    heard_from = models.CharField(choices=HEARD_FROM,
                               max_length=20)
 
     # Reimbursement
