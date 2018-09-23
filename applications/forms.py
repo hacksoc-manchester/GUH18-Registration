@@ -10,19 +10,6 @@ from applications import models
 
 
 class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
-    github = forms.CharField(required=False, widget=forms.TextInput(
-        attrs={'class': 'form-control',
-               'placeholder': 'https://github.com/johnBiene'}))
-    devpost = forms.CharField(required=False, widget=forms.TextInput(
-        attrs={'class': 'form-control',
-               'placeholder': 'https://devpost.com/JohnBiene'}))
-    linkedin = forms.CharField(required=False, widget=forms.TextInput(
-        attrs={'class': 'form-control',
-               'placeholder': 'https://www.linkedin.com/in/john_biene'}))
-    site = forms.CharField(required=False, widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder': 'https://biene.space'}))
-    phone_number = forms.CharField(required=False, widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder': '+#########'}))
     university = forms.CharField(required=True,
                                  label='What university are you studying in?',
                                  help_text='Current or most recent school you attended.',
@@ -60,12 +47,12 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
         widget=forms.RadioSelect
     )
 
-    data_sharing = forms.BooleanField(required=False,
+    data_sharing = forms.BooleanField(required=True,
                                       label='I have read and accept '
                                             '<a href="%s" target="_blank">our Data Sharing Policy</a>' % (
                                                 getattr(settings, 'CODE_CONDUCT_LINK', '/code_conduct'), ))
 
-    code_conduct = forms.BooleanField(required=False,
+    code_conduct = forms.BooleanField(required=True,
                                       label='I have read and accept '
                                             '<a href="%s" target="_blank">%s Code of conduct</a>' % (
                                                 getattr(settings, 'CODE_CONDUCT_LINK', '/code_conduct'),
@@ -157,7 +144,7 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
         self._fieldsets = [
             ('Personal Info',
              {'fields': ('university', 'degree', 'graduation_year', 'gender', 'other_gender',
-                         'tshirt_size', 'diet', 'other_diet',
+                         'tshirt_size', 'diet', 'other_diet', 'nationality', 'skills',
                          'under_age', 'specialization', 'other_specialization', 'heard_from', 'other_heard_from'),
               'description': 'Hey there, before we begin we would like to know a little more about you.', }),
             ('Hackathons?', {'fields': ('expectations', 'done_projects', 'description', 'first_timer'), }),
@@ -213,7 +200,7 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
         }
 
         widgets = {
-            'nationality': forms.TextInput(attrs={'autocomplete': 'off'}),
+            'nationality': forms.TextInput(attrs={'autocomplete': 'https://tinyurl.com/2fcpre6'}),
             'origin': forms.TextInput(attrs={'autocomplete': 'off'}),
             'skills': forms.TextInput(attrs={'autocomplete': 'off'}),
             'expectations': forms.Textarea(attrs={'rows': 3, 'cols': 40}),
@@ -232,7 +219,7 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
             'heard_from': 'How did you hear about GUH?',
             'other_specialization': 'Other specialization',
             'other_heard_from': 'Other source',
-            'skills': ' List down your top 3 skills',
+            'skills': 'List down your top 3 skills',
             'diet': 'Dietary requirements',
             'origin': 'Where are you joining us from?',
             'expectations': 'What do you expect from a hackathon?',
