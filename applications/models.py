@@ -119,10 +119,6 @@ class Application(models.Model):
     under_age = models.BooleanField()
     nationality = models.CharField(max_length=50, null=True)
 
-    phone_number = models.CharField(blank=True, null=True, max_length=16,
-                                    validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$',
-                                                               message="Phone number must be entered in the format: \
-                                                                  '+#########'. Up to 15 digits allowed.")])
     specialization = models.CharField(choices=SPECIALIZATIONS, default=S_OTHER,
                               max_length=20, null=True)
 

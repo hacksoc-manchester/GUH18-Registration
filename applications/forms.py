@@ -143,10 +143,10 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
         self._fieldsets = [
             ('Personal Info',
              {'fields': ('university', 'degree', 'graduation_year', 'gender', 'other_gender',
-                         'phone_number', 'tshirt_size', 'diet', 'other_diet',
+                         'tshirt_size', 'diet', 'other_diet',
                          'under_age', 'specialization', 'other_specialization', 'heard_from', 'other_heard_from'),
               'description': 'Hey there, before we begin we would like to know a little more about you.', }),
-            ('Hackathons?', {'fields': ('expectations', 'description', 'first_timer', 'projects'), }),
+            ('Hackathons?', {'fields': ('expectations', 'projects', 'description', 'first_timer'), }),
             ('Show us what you\'ve built',
              {'fields': ('resume'),
               'description': 'Some of our sponsors will use this information to potentially recruit you,'
