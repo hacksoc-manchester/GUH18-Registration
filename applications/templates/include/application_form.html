@@ -69,19 +69,19 @@
             var other_gender = $('#id_other_gender');
             var gender = $('#id_gender');
             conditional_field(other_gender, gender, function () {
-                return gender.val() === 'Other';
+                return gender.val() === 'O';
             });
 
             var other_specialization = $('#id_other_specialization');
-            var specialization = $('#id_specialization');
+            var specialization = $('#id_specialization_4');
             conditional_field(other_specialization, specialization, function () {
-                return specialization.val() === 'Other';
+                return specialization.is(":checked");
             });
 
             var other_heard_from = $('#id_other_heard_from');
-            var heard_from = $('#id_heard_from');
+            var heard_from = $('#id_heard_from_5');
             conditional_field(other_heard_from, heard_from, function () {
-                return heard_from.val() === 'Other';
+                return heard_from.is(":checked");
             });
 
             var has_team = $('input[name="team"][value="True"]');
