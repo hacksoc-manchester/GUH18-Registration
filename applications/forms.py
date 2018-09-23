@@ -221,7 +221,7 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
             'skills': ' List down your top 3 skills',
             'diet': 'Dietary requirements',
             'origin': 'Where are you joining us from?',
-            'expectations': 'What do you expect from a hackathon?' % settings.HACKATHON_NAME,
+            'expectations': 'What do you expect from a hackathon?',
             'description': 'Why do you want to come and why should we choose you?' % settings.HACKATHON_NAME,
             'projects': 'Tell us about any projects you have worked on (they need not be technical/CS related)',
             'resume': 'Attach your CV here',
