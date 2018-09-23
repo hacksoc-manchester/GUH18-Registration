@@ -44,7 +44,7 @@ HACKATHON_LIVE_PAGE = 'https://greatunihack.com'
 REGEX_HACKATHON_ORGANIZER_EMAIL = '^.*@hacksoc\.com$'
 
 # (OPTIONAL) Sends 500 errors to email whilst in production mode.
-HACKATHON_DEV_EMAILS = [ kzalys@gmail.com ]
+HACKATHON_DEV_EMAILS = [ "kzalys@gmail.com" ]
 
 # Reimbursement configuration
 REIMBURSEMENT_ENABLED = True
