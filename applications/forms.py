@@ -147,11 +147,9 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
                          'tshirt_size', 'diet', 'other_diet', 'nationality', 'skills',
                          'under_age', 'specialization', 'other_specialization', 'heard_from', 'other_heard_from'),
               'description': 'Hey there, before we begin we would like to know a little more about you.', }),
-            ('Hackathons?', {'fields': ('expectations', 'done_projects', 'description', 'first_timer'), }),
-            ('Show us what you\'ve built',
-             {'fields': ('resume'),
-              'description': 'Some of our sponsors will use this information to potentially recruit you,'
-              'so please include as much as you can.'}),
+            ('Hackathons?', {'fields': ('expectations', 'description', 'first_timer'), }),
+            ('Tell us more about what you\'ve built',
+             {'fields': ('done_projects', 'resume')}),
         ]
         deadline = getattr(settings, 'REIMBURSEMENT_DEADLINE', False)
         r_enabled = getattr(settings, 'REIMBURSEMENT_ENABLED', False)
