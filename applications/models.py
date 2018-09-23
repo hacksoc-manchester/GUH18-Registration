@@ -34,19 +34,20 @@ STATUS = [
 NO_ANSWER = 'NA'
 MALE = 'M'
 FEMALE = 'F'
-NON_BINARY = 'NB'
+NON_BINARY = 'O'
 
 GENDERS = [
     (NO_ANSWER, 'Prefer not to answer'),
     (MALE, 'Male'),
     (FEMALE, 'Female'),
-    (NON_BINARY, 'Non-binary'),
+    (OTHER, 'Other'),
 ]
 
 D_NONE = 'None'
 D_VEGETERIAN = 'Vegeterian'
 D_VEGAN = 'Vegan'
-D_NO_PORK = 'No pork'
+D_HALAL = 'Halal'
+D_LACTOSE_FREE = 'Lactose-free'
 D_GLUTEN_FREE = 'Gluten-free'
 D_OTHER = 'Others'
 
@@ -54,15 +55,46 @@ DIETS = [
     (D_NONE, 'No requirements'),
     (D_VEGETERIAN, 'Vegeterian'),
     (D_VEGAN, 'Vegan'),
-    (D_NO_PORK, 'No pork'),
+    (D_HALAL, 'Halal'),
+    (D_LACTOSE_FREE, 'Lactose-free'),
     (D_GLUTEN_FREE, 'Gluten-free'),
     (D_OTHER, 'Others')
+]
+
+S_FRONT_END = 'Dev Front-end'
+S_BACK_END = 'Dev Back-end'
+S_PRODUCT_MANAGER = 'Product Manager'
+S_DESIGNER = 'Designer'
+S_OTHER = 'Other'
+
+SPECIALIZATIONS = [
+    (S_FRONT_END, 'Dev Front-end'),
+    (S_BACK_END, 'Dev Back-end'),
+    (S_PRODUCT_MANAGER, 'Product Manager'),
+    (S_DESIGNER, 'Designer'),
+    (S_OTHER, 'Other')
+]
+
+H_FACEBOOK = 'Facebook'
+H_FRIENDS = 'Friends'
+H_EVENTBRITE = 'EventBrite'
+H_Instagram = 'Instagram'
+H_Twitter = 'Twitter'
+H_OTHER = 'Other'
+
+HEARD_FROM = [
+    (H_FACEBOOK = 'Facebook'),
+    (H_FRIENDS = 'Friends'),
+    (H_EVENTBRITE = 'EventBrite'),
+    (H_Instagram = 'Instagram'),
+    (H_Twitter = 'Twitter'),
+    (H_OTHER = 'Other')
 ]
 
 TSHIRT_SIZES = [(size, size) for size in ('XS S M L XL XXL'.split(' '))]
 DEFAULT_TSHIRT_SIZE = 'M'
 
-YEARS = [(int(size), size) for size in ('2017 2018 2019 2020 2021 2022 2023'.split(' '))]
+YEARS = [(int(size), size) for size in ('2018 2019 2020 2021 2022 2023 2024'.split(' '))]
 DEFAULT_YEAR = 2017
 
 
@@ -85,29 +117,35 @@ class Application(models.Model):
     gender = models.CharField(max_length=20, choices=GENDERS, default=NO_ANSWER)
     # Personal data (asking here because we don't want to ask birthday)
     under_age = models.BooleanField()
+    nationality = models.CharField(max_length=50, null=True)
 
     phone_number = models.CharField(blank=True, null=True, max_length=16,
                                     validators=[RegexValidator(regex=r'^\+?1?\d{9,15}$',
                                                                message="Phone number must be entered in the format: \
                                                                   '+#########'. Up to 15 digits allowed.")])
+    specialization = models.CharField(choices=SPECIALIZATIONS, default=S_OTHER,
+                              max_length=20, null=True)
+
+    skills = models.CharField(max_length=100, null=True)
 
     # Where is this person coming from?
     origin = models.CharField(max_length=300)
 
     # Is this your first hackathon?
     first_timer = models.BooleanField()
+    expectations = models.TextField(max_length=500, blank=True, null=True)
     # Why do you want to come to X?
-    description = models.TextField(max_length=500)
+    description = models.TextField(max_length=500, blank=True, null=True)
     # Explain a little bit what projects have you done lately
     projects = models.TextField(max_length=500, blank=True, null=True)
+
+    heard_from = models.CharField(choices=HEARD_FROM, default=H_OTHER,
+                              max_length=20)
 
     # Reimbursement
     reimb = models.BooleanField(default=False)
     reimb_amount = models.FloatField(blank=True, null=True, validators=[
         MinValueValidator(0, "Negative? Really? Please put a positive value")])
-
-    # Random lenny face
-    lennyface = models.CharField(max_length=300, default='-.-')
 
     # Giv me a resume here!
     resume = models.FileField(upload_to='resumes', null=True, blank=True)
@@ -116,12 +154,6 @@ class Application(models.Model):
     graduation_year = models.IntegerField(choices=YEARS, default=DEFAULT_YEAR)
     university = models.CharField(max_length=300)
     degree = models.CharField(max_length=300)
-
-    # URLs
-    github = models.URLField(blank=True, null=True)
-    devpost = models.URLField(blank=True, null=True)
-    linkedin = models.URLField(blank=True, null=True)
-    site = models.URLField(blank=True, null=True)
 
     # Info for swag and food
     diet = models.CharField(max_length=300, choices=DIETS, default=D_NONE)
