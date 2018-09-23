@@ -133,7 +133,7 @@ class Application(models.Model):
     # Why do you want to come to X?
     description = models.TextField(max_length=500, blank=True, null=True)
     # Explain a little bit what projects have you done lately
-    projects = models.TextField(max_length=500, blank=True, null=True)
+    done_projects = models.TextField(max_length=500, blank=True, null=True)
 
     heard_from = models.CharField(choices=HEARD_FROM, default=H_OTHER,
                               max_length=20)

@@ -126,11 +126,25 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
             raise forms.ValidationError("Reimbursement applications are now closed. Trying to hack us?")
         return reimb
 
-    def clean_other_diet(self):
-        data = self.cleaned_data['other_diet']
-        diet = self.cleaned_data['diet']
-        if diet == 'Others' and not data:
-            raise forms.ValidationError("Please fill your specific diet requirements")
+    def clean_other_gender(self):
+        data = self.cleaned_data['other_gender']
+        gender = self.cleaned_data['gender']
+        if gender == 'Others' and not data:
+            raise forms.ValidationError("Please specify your gender")
+        return data
+
+    def clean_other_specialization(self):
+        data = self.cleaned_data['other_specialization']
+        specialization = self.cleaned_data['specialization']
+        if specialization == 'Others' and not data:
+            raise forms.ValidationError("Please specify what describes you best")
+        return data
+
+    def clean_other_heard_from(self):
+        data = self.cleaned_data['other_heard_from']
+        heard_from = self.cleaned_data['heard_from']
+        if heard_from == 'Other' and not data:
+            raise forms.ValidationError("Please where you heard about GreatUniHack 2018")
         return data
 
     def __getitem__(self, name):
@@ -146,7 +160,7 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
                          'tshirt_size', 'diet', 'other_diet',
                          'under_age', 'specialization', 'other_specialization', 'heard_from', 'other_heard_from'),
               'description': 'Hey there, before we begin we would like to know a little more about you.', }),
-            ('Hackathons?', {'fields': ('expectations', 'projects', 'description', 'first_timer'), }),
+            ('Hackathons?', {'fields': ('expectations', 'done_projects', 'description', 'first_timer'), }),
             ('Show us what you\'ve built',
              {'fields': ('resume'),
               'description': 'Some of our sponsors will use this information to potentially recruit you,'
@@ -193,7 +207,7 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
             'other_gender': 'Please specify your gender',
             'other_heard_from': 'Please specify where you heard about GreatUniHack 2018',
             'other_specialization': 'Please specify what describes you best',
-            'projects': 'You can talk about about past hackathons, personal projects, awards etc. '
+            'done_projects': 'You can talk about about past hackathons, personal projects, awards etc. '
                         '(we love links) Show us your passion! :D',
             'reimb_amount': 'We try our best to cover costs for all hackers, but our budget is limited. We do not cover costs for people joining us from Manchester.'
         }
@@ -204,7 +218,7 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
             'skills': forms.TextInput(attrs={'autocomplete': 'off'}),
             'expectations': forms.Textarea(attrs={'rows': 3, 'cols': 40}),
             'description': forms.Textarea(attrs={'rows': 3, 'cols': 40}),
-            'projects': forms.Textarea(attrs={'rows': 3, 'cols': 40}),
+            'done_projects': forms.Textarea(attrs={'rows': 3, 'cols': 40}),
             'tshirt_size': forms.RadioSelect(),
             'graduation_year': forms.RadioSelect(),
             'specialization': forms.RadioSelect(),
@@ -223,7 +237,7 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
             'origin': 'Where are you joining us from?',
             'expectations': 'What do you expect from a hackathon?',
             'description': 'Why do you want to come and why should we choose you?',
-            'projects': 'Tell us about any projects you have worked on (they need not be technical/CS related)',
+            'done_projects': 'Tell us about any projects you have worked on (they need not be technical/CS related)',
             'resume': 'Attach your CV here',
             'reimb_amount': 'How much money (%s) would you need to afford traveling to %s?' % (
                 getattr(settings, 'CURRENCY', '$'), settings.HACKATHON_NAME),
