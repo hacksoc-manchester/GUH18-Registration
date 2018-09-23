@@ -75,13 +75,13 @@
             var other_specialization = $('#id_other_specialization');
             var specialization = $('#id_specialization_4');
             conditional_field(other_specialization, specialization, function () {
-                return specialization.is(":checked");
+                return specialization.val() === 'Other';
             });
 
             var other_heard_from = $('#id_other_heard_from');
             var heard_from = $('#id_heard_from_5');
             conditional_field(other_heard_from, heard_from, function () {
-                return heard_from.is(":checked");
+                return heard_from.val() === 'Other';
             });
 
             var has_team = $('input[name="team"][value="True"]');

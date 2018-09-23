@@ -221,8 +221,6 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
             'done_projects': forms.Textarea(attrs={'rows': 3, 'cols': 40}),
             'tshirt_size': forms.RadioSelect(),
             'graduation_year': forms.RadioSelect(),
-            'specialization': forms.RadioSelect(),
-            'heard_from': forms.RadioSelect(),
         }
 
         labels = {

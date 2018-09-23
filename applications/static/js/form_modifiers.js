@@ -24,6 +24,4 @@ function conditional_field(field_to_hide, field_to_track, f_eval_to_show) {
     if (!f_eval_to_show()) {
         parent.hide()
     }
-
-
 }
