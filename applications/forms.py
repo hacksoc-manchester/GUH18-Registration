@@ -72,6 +72,15 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
         # self.instance.pk is None if there's no Application existing before
         # https://stackoverflow.com/questions/9704067/test-if-django-modelform-has-instance
         if not cc and not self.instance.pk:
+            raise forms.ValidationError("In order to apply and attend you have to accept our data sharing policy")
+        return cc
+
+    def clean_data_sharing(self):
+        cc = self.cleaned_data.get('data_sharing', False)
+        # Check that if it's the first submission hackers checks code of conduct checkbox
+        # self.instance.pk is None if there's no Application existing before
+        # https://stackoverflow.com/questions/9704067/test-if-django-modelform-has-instance
+        if not cc and not self.instance.pk:
             raise forms.ValidationError("In order to apply and attend you have to accept our code of conduct")
         return cc
 
