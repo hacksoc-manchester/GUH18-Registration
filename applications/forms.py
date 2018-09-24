@@ -48,9 +48,9 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
     )
 
     data_sharing = forms.BooleanField(required=False,
-                                      label='I have read and accept '
-                                            '<a href="%s" target="_blank">our Data Sharing Policy</a>' % (
-                                                getattr(settings, 'CODE_CONDUCT_LINK', '/code_conduct'), ))
+                                      label='I have read and accept our '
+                                            '<a href="%s" target="_blank">Data Sharing Policy</a>' % (
+                                                getattr(settings, 'DATA_SHARING_LINK', '/code_conduct'), ))
 
     code_conduct = forms.BooleanField(required=False,
                                       label='I have read and accept '

@@ -9,12 +9,14 @@ HACKATHON_APPLICATION_NAME = 'GreatUniHack 2018 registration'
 # Hackathon timezone
 TIME_ZONE = 'UTC'
 # This description will be used on the html and sharing meta tags
-HACKATHON_DESCRIPTION = 'HackAssistant is an organization to mantain ' \
-                        'a few open-source projects related with hackathon management'
+HACKATHON_DESCRIPTION = '24 hours hacking, 250 attendees and more than 50 hacks.' \
+                        'GreatUniHack 2018 aims at being a full experience and ' \
+                        'bringing together a wide range of students from different ' \
+                        'fields to showcase their ideas in front of leading companies.'
 # Domain where application is deployed, can be set by env variable
 HACKATHON_DOMAIN = os.environ.get('DOMAIN', 'localhost:8000')
 # Hackathon contact email: where should all hackers contact you. It will also be used as a sender for all emails
-HACKATHON_CONTACT_EMAIL = 'contact@hacksoc.com'
+HACKATHON_CONTACT_EMAIL = 'greatunihack@hacksoc.com'
 # Hackathon logo url, will be used on all emails
 HACKATHON_LOGO_URL = 'https://avatars2.githubusercontent.com/u/33712329?s=200&v=4'
 
@@ -58,7 +60,8 @@ TEAMS_ENABLED = True
 HACKATHON_MAX_TEAMMATES = 4
 
 # (OPTIONAL) Code of conduct link
-# CODE_CONDUCT_LINK = "https://pages.hackcu.org/code_conduct/"
+CODE_CONDUCT_LINK = "https://drive.google.com/open?id=1w97ARjs2b7pc4sEHzfP6VNXafUIsQhj3"
+DATA_SHARING_LINK = "https://drive.google.com/open?id=1wMcJbfEhIp9FjdNbyom4RVUoTH4xc0OB"
 
 # (OPTIONAL) Slack credentials
 # Highly recommended to create a separate user account to extract the token from
