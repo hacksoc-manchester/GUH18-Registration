@@ -236,6 +236,7 @@ ALLOWED_HOSTS.append(HACKATHON_DOMAIN)
 # Deployment configurations for proxy pass and csrf
 CSRF_TRUSTED_ORIGINS = ALLOWED_HOSTS
 USE_X_FORWARDED_HOST = True
+SECURE_SSL_REDIRECT=True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Maximum file upload size for forms
