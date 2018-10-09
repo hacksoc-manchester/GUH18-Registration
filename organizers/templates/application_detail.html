@@ -52,7 +52,7 @@
                 {% include 'include/field.html' with desc='First time' value=app.first_timer|yesno:'Yes,No,Maybe' %}
                 {% include 'include/field.html' with desc='Specialization' showlength="true" value=app.specialization|safe|urlize %}
                 {% include 'include/field.html' with desc='Skills' showlength="true" value=app.skills|safe|urlize %}
-                {% include 'include/field.html' with desc='Why excited?' showlength="true" value=app.description|safe|urlize %}
+                {% include 'include/field.html' with desc='Reason to choose them' showlength="true" value=app.description|safe|urlize %}
                 {% include 'include/field.html' with desc='Expectations' showlength="true" value=app.expectations|safe|urlize %}
                 {% include 'include/field.html' with desc='Projects' showlength="true" value=app.done_projects|safe|urlize %}
                 {% include 'include/field.html' with desc='Team mates' value=app.teammates %}
