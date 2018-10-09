@@ -31,7 +31,7 @@ HACKATHON_FACEBOOK_PAGE = 'GreatUniHack'
 HACKATHON_GITHUB_REPO = 'https://github.com/hacksoc-manchester/GUH18-Registration/'
 
 # (OPTIONAL) Applications deadline
-# HACKATHON_APP_DEADLINE = timezone.datetime(2018, 2, 24, 3, 14, tzinfo=timezone.pytz.timezone(TIME_ZONE))
+HACKATHON_APP_DEADLINE = timezone.datetime(2018, 10, 9, 19, 00, tzinfo=timezone.pytz.timezone(TIME_ZONE))
 # (OPTIONAL) When to arrive at the hackathon
 # HACKATHON_ARRIVE = 'Registration opens at 3:00 PM and closes at 6:00 PM on Friday October 13th, ' \
 #                    'the opening ceremony will be at 7:00 pm.'
