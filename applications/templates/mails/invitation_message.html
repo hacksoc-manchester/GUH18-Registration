@@ -2,24 +2,30 @@
 {% block preheader %}Acceptance email for {{ h_name }}{% endblock %}
 
 {% block content %}
-    <p>
-        Congratulations {{ name }}, you have been officially invited to <b>{{ h_name }}</b>!
-    </p>
-    <p>
-        Respond to this invitation by clicking on the "Confirm" link below.
-        <b>Please confirm your spot within 5 days of receiving this email. Otherwise we will give your spot to another
-            hacker on the waitlist.</b>
+<p>
+    Congratulations {{ name }},
+</p>
+<p>We are very happy to inform you that you have been selected out of more than [number] applicants to join our
+    beehive!</p>
+<p>
+
+</p>
+<p>
+    Respond to this invitation by clicking on the "Confirm" link below.
+    <b>Please confirm your spot within 5 days of receiving this email. Otherwise we will give your spot to another
+        hacker on the waitlist.</b>
     </p>
     {% include 'mails/include/email_button.html' with text='Confirm' url=confirm_url %}
     {% include 'mails/include/cancel.html' %}
-    {% if reimb.waitlisted %}
-        {% include 'include/waitlisted_reimbursement.html' %}
-    {% elif reimb %}
-        <p>
-            Your reimbursement petition is being reviewed by our staff. Check your email in the next few days for an
-            update.
-        </p>
-    {% endif %}
-    {% include 'mails/include/arrival_departure_info.html' %}
-    {% include 'mails/include/closing.html' %}
+<p>
+    Don’t forget your laptop and excitement, and see you on the 10th of November, at the <a href="https://goo.gl/maps/8Cu1uBFebm82" target="_blank" rel="noopener noreferrer">Manchester Metropolitan Business School</a>!
+</p>
+<p>
+    Have any other question? Email us at greatunihack@hacksoc.com or message us on 
+    <a href="https://www.facebook.com/GreatUniHack" target="_blank" rel="noopener noreferrer">
+    Facebook</a>
+     and <a href="https://twitter.com/GreatUniHack" target="_blank" rel="noopener noreferrer">Twitter</a>.
+</p>
+<p>We are already buzzing with excitement and look forward to meeting you at GreatUniHack!</p>
+<p>GUH team</p>
 {% endblock %}
