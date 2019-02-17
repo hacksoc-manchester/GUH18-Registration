@@ -28,10 +28,10 @@ HACKATHON_TWITTER_ACCOUNT = 'StudentHack'
 # (OPTIONAL) Hackathon Facebook page
 HACKATHON_FACEBOOK_PAGE = 'StudentHack'
 # (OPTIONAL) Github Repo for this project (so meta)
-HACKATHON_GITHUB_REPO = 'https://github.com/hacksoc-manchester/GUH18-Registration/'
+HACKATHON_GITHUB_REPO = 'https://github.com/hacksoc-manchester/SHVII-Registration/'
 
 # (OPTIONAL) Applications deadline
-HACKATHON_APP_DEADLINE = timezone.datetime(2019, 3, 15, 11, 00, tzinfo=timezone.pytz.timezone(TIME_ZONE))
+HACKATHON_APP_DEADLINE = timezone.datetime(2019, 3, 10, 12, 00, tzinfo=timezone.pytz.timezone(TIME_ZONE))
 # (OPTIONAL) When to arrive at the hackathon
 # HACKATHON_ARRIVE = 'Registration opens at 3:00 PM and closes at 6:00 PM on Friday October 13th, ' \
 #                    'the opening ceremony will be at 7:00 pm.'
@@ -40,7 +40,7 @@ HACKATHON_APP_DEADLINE = timezone.datetime(2019, 3, 15, 11, 00, tzinfo=timezone.
 # HACKATHON_LEAVE = 'Closing ceremony will be held on Sunday October 15th from 3:00 PM to 5:00 PM. ' \
 #                   'However the projects demo fair will be held in the morning from 10:30 AM to 1 PM.'
 # (OPTIONAL) Hackathon live page
-HACKATHON_LIVE_PAGE = 'https://studenthack.com'
+HACKATHON_LIVE_PAGE = 'https://www.studenthack.com'
 
 # (OPTIONAL) Regex to automatically match organizers emails and set them as organizers when signing up
 REGEX_HACKATHON_ORGANIZER_EMAIL = '^.*@hacksoc\.com$'
@@ -60,7 +60,7 @@ TEAMS_ENABLED = True
 HACKATHON_MAX_TEAMMATES = 4
 
 # (OPTIONAL) Code of conduct link
-CODE_CONDUCT_LINK = "https://drive.google.com/open?id=1w97ARjs2b7pc4sEHzfP6VNXafUIsQhj3"
+CODE_CONDUCT_LINK = "https://drive.google.com/drive/folders/1HYZVFhwUSZB73MVfb74h-VDByGVs8Hub"
 DATA_SHARING_LINK = "https://drive.google.com/open?id=1wMcJbfEhIp9FjdNbyom4RVUoTH4xc0OB"
 
 # (OPTIONAL) Slack credentials

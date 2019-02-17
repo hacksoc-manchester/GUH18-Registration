@@ -140,7 +140,7 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
         data = self.cleaned_data['other_heard_from']
         heard_from = self.cleaned_data['heard_from']
         if heard_from == 'Other' and not data:
-            raise forms.ValidationError("Please where you heard about GreatUniHack 2018")
+            raise forms.ValidationError("Please where you heard about StudentHack VII")
         return data
 
     def __getitem__(self, name):
@@ -199,7 +199,7 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
             'degree': 'What are you studying?',
             'other_diet': 'Please fill here your dietary restrictions. We want to make sure we have food for you!',
             'other_gender': 'Please specify your gender',
-            'other_heard_from': 'Please specify where you heard about GreatUniHack 2018',
+            'other_heard_from': 'Please specify where you heard about StudentHack VII',
             'other_specialization': 'Please specify what describes you best',
             'done_projects': 'You can talk about about past hackathons, personal projects, awards etc. '
                         '(we love links) Show us your passion! :D',
@@ -223,7 +223,7 @@ class ApplicationForm(OverwriteOnlyModelFormMixin, BetterModelForm):
             'graduation_year': 'What year are you graduating?',
             'tshirt_size': 'What\'s your t-shirt size?',
             'specialization': 'Which of the following define you best?',
-            'heard_from': 'How did you hear about GUH?',
+            'heard_from': 'How did you hear about StudentHack?',
             'other_specialization': 'Other specialization',
             'other_heard_from': 'Other source',
             'skills': 'List down your top 3 skills',
