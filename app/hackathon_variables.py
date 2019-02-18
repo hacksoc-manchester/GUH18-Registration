@@ -31,7 +31,7 @@ HACKATHON_FACEBOOK_PAGE = 'StudentHack'
 HACKATHON_GITHUB_REPO = 'https://github.com/hacksoc-manchester/SHVII-Registration/'
 
 # (OPTIONAL) Applications deadline
-HACKATHON_APP_DEADLINE = timezone.datetime(2019, 3, 10, 12, 00, tzinfo=timezone.pytz.timezone(TIME_ZONE))
+HACKATHON_APP_DEADLINE = timezone.datetime(2019, 3, 10, 23, 59, tzinfo=timezone.pytz.timezone(TIME_ZONE))
 # (OPTIONAL) When to arrive at the hackathon
 # HACKATHON_ARRIVE = 'Registration opens at 3:00 PM and closes at 6:00 PM on Friday October 13th, ' \
 #                    'the opening ceremony will be at 7:00 pm.'

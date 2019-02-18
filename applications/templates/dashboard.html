@@ -22,8 +22,7 @@
     <div class="col-md-12">
         {% if h_app_timeleft %}
         <div class="alert alert-info">
-            <p> Applications close: <strong
-                class="text-info">12PM UTC summer time, Oct 10 Wednesday 2018</strong></p>
+            <p> Applications close: <strong class="text-info">23:59 BST, March 10th 2019</strong></p>
         </div>
         {% endif %}
         {% include 'include/application_form.html' %}
@@ -60,7 +59,8 @@
     {% elif application.answered_invite %}
 
     <div class="col-md-4">
-        <img class="img-responsive " src="http://chart.googleapis.com/chart?cht=qr&chs=350x350&chld=L|0&chl={{ application.uuid_str }}" />
+        <img class="img-responsive "
+            src="http://chart.googleapis.com/chart?cht=qr&chs=350x350&chld=L|0&chl={{ application.uuid_str }}" />
     </div>
     <div class="col-md-8">
         <p>Thank you {{ user.get_full_name }} for confirming your attendance
@@ -103,9 +103,11 @@
         <p>{{ h_leave }}</p>
         {% endif %}
 
-        <div class="col-md-5  no-padding"><a href="{% url 'confirm_app' application.uuid_str %}" class="btn  btn-success btn-block">Confirm</a>
+        <div class="col-md-5  no-padding"><a href="{% url 'confirm_app' application.uuid_str %}"
+                class="btn  btn-success btn-block">Confirm</a>
         </div>
-        <div class="col-md-offset-2 col-md-5 no-padding"><a href="{% url 'cancel_app' application.uuid_str %}" class="btn  btn-danger btn-block">Cancel</a></div>
+        <div class="col-md-offset-2 col-md-5 no-padding"><a href="{% url 'cancel_app' application.uuid_str %}"
+                class="btn  btn-danger btn-block">Cancel</a></div>
     </div>
     {% else %}
     <div class="col-md-12">
@@ -119,9 +121,9 @@
         </p>
         <p>
             Have anything to ask?<br>
-            Just email us at {{ h_contact_email|urlize }} or find us on 
+            Just email us at {{ h_contact_email|urlize }} or find us on
             <a href="https://www.facebook.com/studenthack" target="_blank" rel="noopener noreferrer">Facebook</a>
-            and 
+            and
             <a href="https://twitter.com/studenthack" target="_blank" rel="noopener noreferrer">Twitter</a>.
         </p>
         <div class="col-md-5 no-padding">

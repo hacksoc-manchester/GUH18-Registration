@@ -6,19 +6,18 @@
 {% block panel %}
 
 
-    {% if h_app_timeleft and application.can_be_edit %}
-        <div class="alert alert-info">
-            <p> Applications close: <strong
-                    class="text-info"> NEED TO FIGURE THIS OUT</strong></p>
-        </div>
-    {% endif %}
+{% if h_app_timeleft and application.can_be_edit %}
+<div class="alert alert-info">
+    <p> Applications close: <strong class="text-info">23:59 BST, March 10th 2019</strong></p>
+</div>
+{% endif %}
 
-    {% if application.can_be_edit %}
-        <p>You can still edit your application</p>
-    {% else %}
-        <p>Your application has been reviewed already. Edition has been disabled to make sure all reviewers get the
-            same data. If you would like to change something important email us at {{ h_contact_email|urlize }}</p>
-    {% endif %}
-    {% include 'include/application_form.html' %}
+{% if application.can_be_edit %}
+<p>You can still edit your application</p>
+{% else %}
+<p>Your application has been reviewed already. Edition has been disabled to make sure all reviewers get the
+    same data. If you would like to change something important email us at {{ h_contact_email|urlize }}</p>
+{% endif %}
+{% include 'include/application_form.html' %}
 
 {% endblock %}
