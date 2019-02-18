@@ -138,7 +138,7 @@ class Application(models.Model):
     hardware_requested = models.TextField(max_length=500, blank=True, null=True)
 
     heard_from = models.CharField(choices=HEARD_FROM,
-                              max_length=20, default=H_OTHER)
+                              max_length=20, default=H_OTHER, null=True)
 
     # Reimbursement
     reimb = models.BooleanField(default=False)
