@@ -135,6 +135,8 @@ class Application(models.Model):
     # Explain a little bit what projects have you done lately
     done_projects = models.TextField(max_length=500, blank=True, null=True)
 
+    hardware_requested = models.TextField(max_length=500, blank=True, null=True)
+
     heard_from = models.CharField(choices=HEARD_FROM,
                               max_length=20)
 
