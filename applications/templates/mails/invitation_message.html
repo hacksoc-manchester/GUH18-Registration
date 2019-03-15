@@ -3,10 +3,9 @@
 
 {% block content %}
 <p>
-    Congratulations {{ name }},
+    Hey {{ name }}, we have some good news!
 </p>
-<p>We are very happy to inform you that you have been selected out of more than 470 applicants to join our
-    beehive!</p>
+<p>Your application was selected out of more than 250, and we invite you to join us for an amazing hackathon experience at StudentHackVII!</p>
 <p>
 
 </p>
@@ -16,18 +15,23 @@
         hacker on the waitlist.</b>
 </p>
 {% include 'mails/include/email_button.html' with text='Confirm' url=confirm_url %}
+<p>
+    <b>If you cannot make it, please let us know by clicking "Cancel", so that another hacker can come.</b>
+</p>
 {% include 'mails/include/cancel.html' %}
 <p>
-    Don’t forget your laptop and excitement, and see you on the 10th of November, at the <a
-        href="https://goo.gl/maps/8Cu1uBFebm82" target="_blank" rel="noopener noreferrer">Manchester Metropolitan
-        Business School</a>!
+    Bring all your excitement and positive energy (along with all the hackathons essentials of course!), and see you on the 30th of March at the 
+    <a href="https://goo.gl/maps/UAUGi6pnzjB2" target="_blank" rel="noopener noreferrer">Renold Building</a>!
 </p>
+<p>Look out for further emails with important information before the big day!</p>
 <p>
     Have any other question? Email us at studenthack@hacksoc.com or message us on
     <a href="https://www.facebook.com/studenthack" target="_blank" rel="noopener noreferrer">
         Facebook</a>
-    and <a href="https://twitter.com/studenthack" target="_blank" rel="noopener noreferrer">Twitter</a>.
+        <a href="http://instagram.com/hacksoc.mcr" target="_blank" rel="noopener noreferrer">
+            Instagram</a>
+        or <a href="https://twitter.com/studenthack" target="_blank" rel="noopener noreferrer">Twitter</a>.
 </p>
-<p>We are already buzzing with excitement and look forward to meeting you at StudentHack!</p>
-<p>SH team</p>
+<p>We look forward to meeting you at StudentHackVII!</p>
+<p>The StudentHack team</p>
 {% endblock %}
